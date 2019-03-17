@@ -2,12 +2,10 @@
 file: __init__.py
 date: 12.12.2012
 author smith@example.com
-edited by Ustinov Dmitriy 17/03/2019
-license: MIT
-"""
+license: MIT"""
 
 from flask import Flask, render_template, request, Markup
-import re
+# import re
 
 
 def create_app():
