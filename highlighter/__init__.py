@@ -5,6 +5,7 @@ author smith@example.com
 license: MIT"""
 
 from flask import Flask, render_template, request, Markup
+# import re
 
 
 def create_app():
@@ -15,6 +16,7 @@ def create_app():
 
     @app.route('/', methods=['GET'])
     def index():
+        print('index')
         return render_template(template_file_name)
 
     @app.route('/', methods=['POST'])
@@ -29,24 +31,15 @@ def create_app():
 
     def markup_text(text):
         """Markup given text.
-        This is supplementary method that helps you to wrap marked text in tags.
         @:param text - string text to be marked
         @:return marked text, e.g., <mark>highlighted text</mark>."""
-        result = text
-
-        # TODO: add an implementation
-
+        result = "<mark>{}</mark>".format(text)
         return result
 
     def highlight_text(text, expr):
         """Markup searched string in given text.
-        @:param text - string text to be processed (e.g., 'The sun in the sky')
-        @:param expr - string pattern to be searched in the text (e.g., 'th')
-        @:return marked text, e.g., "<mark>Th</mark>e sun in <mark>th</mark>e sky"."""
-        result = text
-
-        # TODO: add an implementation
-
-        return result
+        @:param text - string text to be processed
+        @:return marked text, e.g., "sample text <mark>highlighted part</mark> rest of the text"."""
+        return text.replace(expr, markup_text(expr))
 
     return app
