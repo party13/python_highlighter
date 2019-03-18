@@ -5,8 +5,6 @@ author smith@example.com
 license: MIT"""
 
 from flask import Flask, render_template, request, Markup
-# import re
-
 
 def create_app():
     """Create flask app for binding."""
